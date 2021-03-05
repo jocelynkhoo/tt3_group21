@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import "./TransactionHistory.css"
+import moment from 'moment'
 
 
 const TransactionHistory = () => {
@@ -56,6 +57,7 @@ const TransactionHistory = () => {
                 <th>Symbol</th>
                 <th>Total Amount</th>
                 <th> Order Type </th>
+                <th>Date</th>
                 </tr>
              </thead>
              <tbody>
@@ -84,6 +86,9 @@ const TransactionHistory = () => {
                         <td style={{color: transaction.orderType === "SELL" ? "RED" : "GREEN"}} >
                             {transaction.orderType}
                         </td>
+                        <td>
+                         {moment.unix(transaction.timestamp).format('DD/MM/YYYY h:mm:ss A')}
+                      </td>
                         
                         </tr>
                         
