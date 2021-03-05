@@ -1,0 +1,15 @@
+.buysell{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.button{
+    background-color: black;
+    border: none;
+    color: red;
+    padding: 15px 32px;
+    font-size: 16px;
+    border-radius: 35px;
+}
+
