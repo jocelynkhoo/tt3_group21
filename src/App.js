@@ -1,4 +1,3 @@
-
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -11,7 +10,6 @@ import Navbar from "./components/Navbar"
 import DummyProtected from "./pages/DummyProtected"
 import Login from "./pages/Login"
 import AuthRoute from "./utils/AuthRoute"
-import dummyProtected from './pages/DummyProtected';
 
 function App() {
   return (
