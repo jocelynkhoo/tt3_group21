@@ -6,8 +6,8 @@ import API_KEY from './API_KEY';
 
 function UserDetails(props) {
 
-    const [firstName, setFirstName] = React.useState("First Name");
-    const [lastName, setLastName] = React.useState("Last Name");
+    const [firstName, setFirstName] = React.useState("");
+    const [lastName, setLastName] = React.useState("");
     const [assetBalance, setAssetBalance] = React.useState(0);
     const [cashBalance, setCashBalance] = React.useState(0);
     const [nric, setNric] = React.useState("");
@@ -70,7 +70,6 @@ function UserDetails(props) {
 
     return (
         <div className="UserDetails">
-            <Navbar />
             <h1> Welcome {firstName} {lastName}</h1>
             <p> NRIC: {nric} </p>
             <p> Address: {address} </p>
