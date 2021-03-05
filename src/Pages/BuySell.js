@@ -36,7 +36,6 @@ class BuySell extends React.Component{
       this.setState({orderType: res.data.orderType})
       this.setState({price: res.data.assetPrice})
       this.setState({assetAmount: res.data.assetAmount})
-
     })
     }
 
