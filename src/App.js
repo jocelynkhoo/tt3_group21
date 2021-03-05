@@ -6,44 +6,34 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import Navbar from "./components/Navbar"
+import DummyProtected from "./pages/DummyProtected"
+import Login from "./pages/Login"
+import dummyProtected from './pages/DummyProtected';
 
 function App() {
   return (
     <div>
-    <Navbar/>
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-    Hello
+      <Navbar/>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/dashboard">About</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route path="/dashboard" component={DummyProtected}/>
+            <Route path="/" component={Login}/>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
