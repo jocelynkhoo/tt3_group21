@@ -66,6 +66,17 @@ function Navbar({authenticated}) {
                     Investments
                   </Link>
                 </li>
+
+                <li className='nav-item'>
+                  <Link
+                    to='/buysell'
+                    className='nav-links'
+                    onClick={closeMobileMenu}
+                  >
+                    Buy/Sell
+                  </Link>
+                  </li>
+                
                 <li className='nav-item'>
                   <Link
                     to='/'

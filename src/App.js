@@ -1,5 +1,5 @@
 import './App.css';
-import BuySell from "./Pages/BuySell"
+import BuySell from "./pages/BuySell"
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import DummyProtected from "./pages/DummyProtected"
-import Login from "./pages/Login"
+import Login from "./pages/login.js"
 import AuthRoute from "./utils/AuthRoute"
 import NavBar from "./components/Navbar"
 import TransactionHistory from "./pages/TransactionHistory"
