@@ -1,12 +1,13 @@
 
 import './App.css';
 import Navbar from "./components/Navbar"
+import BuySell from "./Pages/BuySell"
 
 function App() {
   return (
     <div>
     <Navbar/>
-    Hello
+    <BuySell />
     </div>
   );
 }
