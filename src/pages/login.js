@@ -55,13 +55,15 @@ function Login (props) {
     const [password, setPassword] = useState("")
     const [state, dispatch] = useContext(Context);
 
-    const loginHandler = () => {
-      let userData = {
+    const loginHandler = (event) => {
+      event.preventDefault()
+      let userData = {  
+        
         username: userName,
         password: password
       }
       console.log(userData)
-      loginUser({username: "Group21", password: "SrtURGjh7DEAMZM"}, dispatch,  props.history);
+      loginUser(userData, dispatch,  props.history);
     }
 
     return(
@@ -87,8 +89,8 @@ function Login (props) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={loginHandler}
-              >
+                onClick={(event) => { loginHandler(event)}}>
+              
                 Sign in
               </Button>
             
