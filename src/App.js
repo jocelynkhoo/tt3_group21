@@ -13,7 +13,7 @@ function App() {
     <Router>
       <NavBar/>
       <Switch>
-        <TransactionHistory/>
+        <Route path ='/transaction' exact component= {TransactionHistory}/>
         
       </Switch>
       <Footer/>

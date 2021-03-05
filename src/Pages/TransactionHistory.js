@@ -46,8 +46,10 @@ const TransactionHistory = () => {
 
     return (
         <div className="table">
+            
           <table>
-            {/* <Table striped bordered hover> */}
+
+            
             <thead>
                 <tr>
                 <th>#</th>

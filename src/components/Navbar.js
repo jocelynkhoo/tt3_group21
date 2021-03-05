@@ -59,6 +59,16 @@ function Navbar() {
                 Investments
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link
+                to='/transaction'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Transaction History
+              </Link>
+            </li>
+            
 
             
           </ul>
