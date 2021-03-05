@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { loginUser } from "../utils/authentication"
 
@@ -11,6 +11,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+
+
+import {Context} from '../context/Store'
 
 const styles = theme => ({
   main: {
@@ -50,6 +53,7 @@ function Login (props) {
 
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [state, dispatch] = useContext(Context);
 
     const loginHandler = () => {
       let userData = {
@@ -57,7 +61,7 @@ function Login (props) {
         password: password
       }
       console.log(userData)
-      loginUser({username: "Group21", password: "SrtURGjh7DEAMZM"}, props.history);
+      loginUser({username: "Group21", password: "SrtURGjh7DEAMZM"}, dispatch,  props.history);
     }
 
     return(

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext} from "react";
 import { Route, Redirect } from "react-router-dom";
+import {Context} from '../context/Store'
 
 const AuthRoute = ({ component: Component, authenticated, ...rest }) => {
-  console.log(authenticated)
+  const [state, dispatch] = useContext(Context);
+  console.log(state.authenticated)
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        authenticated != true ? (
+        state.authenticated != true ? (
           <Redirect to="/" />
         ) : (
           <Component {...props} />

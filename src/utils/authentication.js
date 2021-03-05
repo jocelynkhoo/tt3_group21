@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const loginUser = (userData, history) => {
+export const loginUser = (userData, dispatch, history) => {
   const loginUrl = "https://849rs099m3.execute-api.ap-southeast-1.amazonaws.com/techtrek/login"
   let config = {
     headers: {
@@ -14,7 +14,8 @@ export const loginUser = (userData, history) => {
         console.log(res.data.accountKey)
         const idToken = `Bearer ${res.data.accountKey}`;
         localStorage.setItem("idToken", idToken);
-        axios.defaults.headers.common["Authorization"] = res.data.accountKey;
+        axios.defaults.headers.common["x-api-key"] = res.data.accountKey;
+        dispatch({type: 'AUTH', payload: true});
         history.push("/dashboard");
       } else {
         console.log("Invalid return")
@@ -25,3 +26,9 @@ export const loginUser = (userData, history) => {
       console.log(err);
     })  
 };
+
+export const logoutUser = (dispatch) => {
+  localStorage.removeItem("idToken");
+  delete axios.defaults.headers.common["x-api-key"];
+  dispatch({type: 'AUTH', payload: false});
+}
