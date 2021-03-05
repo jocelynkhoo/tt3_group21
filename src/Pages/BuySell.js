@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import "./BuySell.css"
 
 
 
@@ -15,11 +16,12 @@ class BuySell extends React.Component{
         }
 
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleSubmit2 = this.handleSubmit.bind(this)
+        this.handleBuy = this.handleBuy.bind(this)
+        this.handleSell = this.handleSell.bind(this)
+        this.handleNumbers = this.handleNumbers.bind(this)
     }
 
-    componentWillMount(){
+    componentDidMount(){
         const assetsUrl = "https://849rs099m3.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/add"
         let config = {
         headers: {
@@ -27,7 +29,7 @@ class BuySell extends React.Component{
       }
     }
     axios
-    .post(assetsUrl, {accountKey:"97c35611-1394-444f-80fa-3309187bc661", orderType:"Buy", assetAmount: 10}, config)
+    .post(assetsUrl, {accountKey:"97c35611-1394-444f-80fa-3309187bc661", orderType:"Sell", assetAmount: 10}, config)
     .then((res) => {
       console.log(res.data)
       this.setState({assets: res.data.assetSymbol})
@@ -43,36 +45,56 @@ class BuySell extends React.Component{
         this.setState({[name]:value})
     }
 
-    handleSubmit (event){
-        event.preventDefault()
-        this.setState({orderType: "Buy"})
-        return(<h2>You have bought {this.state.number} {this.state.assets} at ${this.state.price}</h2>)
+    handleNumbers(event){
+            const re = /^[0-9\b]+$/;
+            if (event.target.value === '' || re.test(event.target.value)) {
+               this.setState({number: event.target.value})
+            }
+            else{
+                alert("Input Numbers Only")
+            }
     }
 
-    handleSubmit2 = (event) => {
+    handleBuy (event){
+        event.preventDefault()
+        this.setState({orderType: "Buy"})
+        alert(`You have bought ${this.state.number} ${this.state.assets} at ${this.state.price}`)
+    }
+
+    handleSell (event) {
         event.preventDefault()
         this.setState({orderType: "Sell"})
-        return(<h2>You have sold {this.state.number} {this.state.assets} at ${this.state.price}</h2>)
+        alert(`You have sold ${this.state.number} ${this.state.assets} at ${this.state.price}`)
 
     }
 
     render(){
         return(
-            <div>
+            <div className = "buysell">
             <form className = "asset-form">
+                <br/>
+                <label>
+                    Select Asset: 
                 <select>
                     <option>{this.state.assets}</option>
                 </select>
+                </label>
+                <p> The Price of this Asset is: {this.state.price}</p>
+            
+                <label>
+                Input Amount Here: 
                 <input 
                     type = "text"
                     name = "number"
-                    onChange = {this.handleChange}
-                    />
+                    onChange = {this.handleNumbers}
+                    /> 
+                </label>
+               
+                    <br/>
+                    <br/>
 
-                <button  onSubmit={this.handleSubmit}>Buy</button>
-                <button onSubmit={this.handleSubmit2}>Sell</button>
-                <h2 className="Buy" onClick = {this.handleSubmit}></h2>
-                <h2 className="Sell" onClick = {this.handleSubmit2}></h2>
+                <button className="button" onClick={this.handleBuy}>Buy</button>
+                <button className="button" onClick={this.handleSell}>Sell</button>
              </form>       
             </div>
         )
