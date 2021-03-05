@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import "./Navbar.css"
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -30,7 +30,7 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/Home' className='navbar-logo' onClick={closeMobileMenu}>
             <img className="photo-size" src="https://blog.talenox.com/wp-content/uploads/2014/10/DBS_Bank_Logo.svg_.png"/>
-            {/* <i class='fab fa-typo3' /> */}
+           
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

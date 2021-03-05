@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
+import "./TransactionHistory.css"
+
+
 const TransactionHistory = () => {
 
     const [transactions, setTransactions] = React.useState([{}])
@@ -41,7 +44,7 @@ const TransactionHistory = () => {
 
 
     return (
-        <div>
+        <div className="table">
           <table>
             {/* <Table striped bordered hover> */}
             <thead>
@@ -89,7 +92,7 @@ const TransactionHistory = () => {
                 })}
              </tbody>
              </table>
-            {/* </Table> */}
+            
         </div>
     )
 }
