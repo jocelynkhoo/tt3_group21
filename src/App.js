@@ -6,9 +6,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
+    <div>
+    <Navbar/>
     <Router>
       <div>
         <nav>
@@ -40,6 +43,8 @@ function App() {
         </Switch>
       </div>
     </Router>
+    Hello
+    </div>
   );
 }
 
