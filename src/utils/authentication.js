@@ -11,7 +11,10 @@ export const loginUser = (userData, history) => {
     .post(loginUrl, userData, config)
     .then((res) => {
       if(res.status === 200){
-        console.log(res.data)
+        console.log(res.data.accountKey)
+        const idToken = `Bearer ${res.data.accountKey}`;
+        localStorage.setItem("idToken", idToken);
+        axios.defaults.headers.common["Authorization"] = res.data.accountKey;
         history.push("/dashboard");
       } else {
         console.log("Invalid return")
@@ -20,5 +23,5 @@ export const loginUser = (userData, history) => {
     .catch((err) => {
       console.log("Error block");
       console.log(err);
-    });
+    })  
 };

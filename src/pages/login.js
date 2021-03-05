@@ -11,8 +11,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { Link as RouterLink } from 'react-router-dom'
-import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
   main: {
@@ -50,51 +48,49 @@ const styles = theme => ({
 function Login (props) {
     const { classes } = props;
 
-    const [email, setEmail] = useState("")
+    const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
 
     const loginHandler = () => {
       let userData = {
-        username: email,
+        username: userName,
         password: password
       }
       console.log(userData)
-      loginUser(userData, props.history);
+      loginUser({username: "Group21", password: "SrtURGjh7DEAMZM"}, props.history);
     }
 
-        return(
-            <main className={classes.main}>
-      <CssBaseline />
-      <Paper className={classes.paper}>
-       
-        <Typography component="h1" variant="h5">
-          Login Page
-        </Typography>
-        <form className={classes.form}>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Username</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus onChange={(e) => setEmail(e.target.value)}/>
-          </FormControl>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" onChange={(e) => setPassword(e.target.value)}/>
-          </FormControl>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={loginHandler}
-          >
-            Sign in
-          </Button>
-         
-        </form>
-        <Link className={classes.link} component={RouterLink} to="register">
-          Register</Link>
-      </Paper>
-    </main>
+    return(
+        <main className={classes.main}>
+          <CssBaseline />
+          <Paper className={classes.paper}>
+          
+            <Typography component="h1" variant="h5">
+              Login Page
+            </Typography>
+            <form className={classes.form}>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="userName">userName</InputLabel>
+                <Input id="userName" name="userName" autoFocus onChange={(e) => setUserName(e.target.value)}/>
+              </FormControl>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="password">Password</InputLabel>
+                <Input name="password" type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
+              </FormControl>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={loginHandler}
+              >
+                Sign in
+              </Button>
+            
+            </form>
+          </Paper>
+        </main>
         )
 
 }
