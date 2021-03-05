@@ -14,8 +14,17 @@ function UserDetails(props) {
     const [address, setAddress] = React.useState("");
     const [phoneNumber, setPhoneNumber] = React.useState("");
     const [email, setEmail] = React.useState("");
-    var ACCOUNTKEY = "";
-    
+
+    //for storing of account key state
+
+    function moveToAssetCurrentPrice(){
+        //routing here
+    }
+
+    function moveToTransactions() {
+        //routing here
+    }
+
     //calls once on launch
     React.useEffect( () => {
             const axios = require('axios')
@@ -36,25 +45,9 @@ function UserDetails(props) {
                 setAddress(res.data.address);
                 setEmail(res.data.email);
                 setPhoneNumber(res.data.phoneNumber);
-                ACCOUNTKEY = res.data.accountKey;
-            }
 
-            async function makeWalletRequest(){
-                const config ={
-                    method: 'post',
-                    url: "https://849rs099m3.execute-api.ap-southeast-1.amazonaws.com/techtrek/balance",
-                    headers: { "x-api-key": API_KEY },
-                    data: JSON.stringify({
-                        "accountKey" : ACCOUNTKEY
-                    })
-                }
-                console.log(ACCOUNTKEY);
-                let res = await axios(config)
-                console.log(res.data);
             }
-
             makeRequest();
-            makeWalletRequest();
     }, [])
 
     React.useEffect( () => {
@@ -65,15 +58,15 @@ function UserDetails(props) {
                 url: "https://849rs099m3.execute-api.ap-southeast-1.amazonaws.com/techtrek/balance",
                 headers: { "x-api-key": API_KEY },
                 data: JSON.stringify({
-                    "accountKey" : ACCOUNTKEY
+                        "accountKey" : "97c35611-1394-444f-80fa-3309187bc661"
                 })
             }
-            console.log(ACCOUNTKEY);
-            let res = await axios(config)
-            console.log(res.data);
+        let res = await axios(config)
+            setAssetBalance(res.data.assetBalance);
+            setCashBalance(res.data.cashBalance);
         }
+        makeWalletRequest();
     }, [])
-
 
     return (
         <div className="UserDetails">
@@ -87,8 +80,8 @@ function UserDetails(props) {
                     <p> User Asset balance: {assetBalance}</p>
                     <p> User Cash balance: {cashBalance}</p>
                 </div>
-            <button>Transaction History</button>
-            <button>Asset Current Pricing</button>
+            <button onClick={moveToTransactions}>Transaction History</button>
+            <button onClick={moveToAssetCurrentPrice}>Asset Current Pricing</button>
         </div>
     )
     }
