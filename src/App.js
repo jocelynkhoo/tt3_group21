@@ -1,17 +1,37 @@
-
 import './App.css';
-import Navbar from "./components/Navbar"
 import BuySell from "./Pages/BuySell"
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import DummyProtected from "./pages/DummyProtected"
+import Login from "./pages/Login"
+import AuthRoute from "./utils/AuthRoute"
+import NavBar from "./components/Navbar"
+import TransactionHistory from "./pages/TransactionHistory"
+import Footer from "./components/Footer"
+
+import Store from './context/Store'
+
 
 function App() {
+  let authenticated = true;
   return (
-    <div>
+    <Store>
       <Router>
-        <Navbar/>
-        <Route path ='/BuySell' exact component= {BuySell}/>
+        <NavBar/>
+        <Switch>
+              <Route exact path="/" component={Login}/>
+              <AuthRoute exact path="/dashboard" component={DummyProtected} authenticated={authenticated}/>
+              <AuthRoute exact path="/transactionHist" component={TransactionHistory} authenticated={authenticated}/>
+              <AuthRoute exact path="/buysell" component={BuySell} authenticated={authenticated}/>
+        </Switch>
+        <Footer/>
       </Router>
-    </div>
+    </Store>
   );
 }
 
