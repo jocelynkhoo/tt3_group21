@@ -10,6 +10,7 @@ import {
 import Navbar from "./components/Navbar"
 import DummyProtected from "./pages/DummyProtected"
 import Login from "./pages/Login"
+import AuthRoute from "./utils/AuthRoute"
 import dummyProtected from './pages/DummyProtected';
 
 function App() {
@@ -29,8 +30,8 @@ function App() {
             </ul>
           </nav>
           <Switch>
-            <Route path="/dashboard" component={DummyProtected}/>
-            <Route path="/" component={Login}/>
+            <Route exact path="/" component={Login}/>
+            <AuthRoute exact path="/dashboard" component={DummyProtected}/>
           </Switch>
         </div>
       </Router>
