@@ -11,7 +11,7 @@ function App() {
     <Router>
       <NavBar/>
       <Switch>
-        
+        <TransactionHistory/>
       </Switch>
     </Router>
   );

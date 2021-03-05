@@ -6,12 +6,15 @@ const TransactionHistory = () => {
     const [transactions, setTransactions] = React.useState([{}])
 
     const options = {
+        
         headers: {'x-api-key':'PgfXlfXJFM2QyTmuBOTKUazP03JWex648svPUCl5'}
     }
     const getTransactionHistory = () => {
+        
         axios.post("https://849rs099m3.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/view",
         {
-          "accountKey":localStorage.getItem("accountKey")
+        //   "accountKey":localStorage.getItem("accountKey")
+          "accountKey":"97c35611-1394-444f-80fa-3309187bc661"
         },
         options
         )
