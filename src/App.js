@@ -24,8 +24,8 @@ function App() {
         <NavBar/>
         <Switch>
               <Route exact path="/" component={Login}/>
-              <AuthRoute exact path="/dashboard" component={DummyProtected} authenticated={authenticated}/>
-              <AuthRoute exact path="/transactionHist" component={TransactionHistory} authenticated={authenticated}/>
+              <AuthRoute exact path="/dashboard" component={DummyProtected} />
+              <AuthRoute exact path="/transactionHist" component={TransactionHistory}/>
         </Switch>
         <Footer/>
       </Router>
