@@ -9,10 +9,8 @@ function App() {
     <div>
       <Router>
         <Navbar/>
-        <BuySell />
+        <Route path ='/BuySell' exact component= {BuySell}/>
       </Router>
-  
-
     </div>
   );
 }
