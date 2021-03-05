@@ -77,8 +77,8 @@ function UserDetails(props) {
             <p> Phone Number: {phoneNumber} </p>
             <p> Email: {email} </p>
                 <div>
-                    <p> User Asset balance: {assetBalance}</p>
-                    <p> User Cash balance: {cashBalance}</p>
+                    <p> User Asset balance: ${assetBalance}</p>
+                    <p> User Cash balance: ${cashBalance}</p>
                 </div>
             <button onClick={moveToTransactions}>Transaction History</button>
             <button onClick={moveToAssetCurrentPrice}>Asset Current Pricing</button>
