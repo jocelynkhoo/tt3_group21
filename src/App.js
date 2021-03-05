@@ -1,14 +1,19 @@
 
 import './App.css';
-import Navbar from "./components/Navbar"
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import NavBar from "./components/Navbar"
 import TransactionHistory from "./Pages/TransactionHistory"
+ 
 
 function App() {
   return (
-    <div>
-    <Navbar/>
-    <TransactionHistory/>
-    </div>
+
+    <Router>
+      <NavBar/>
+      <Switch>
+        
+      </Switch>
+    </Router>
   );
 }
 
