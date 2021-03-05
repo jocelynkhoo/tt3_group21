@@ -13,20 +13,31 @@ function UserDetails(props) {
     const [cashBalance, setCashBalance] = React.useState(0);
     const [nric, setNric] = React.useState("");
     const [address, setAddress] = React.useState("");
-    const [phoneNumber, setPhoneNumber] = React.useState()
+    const [phoneNumber, setPhoneNumber] = React.useState("");
     const [email, setEmail] = React.useState("");
 
-    const ACCOUNT_KEY = "";
+    const headers = {
+        'x-api-key': 'PgfXlfXJFM2QyTmuBOTKUazP03JWex648svPUCl5'
+    }
 
     React.useEffect(() => {
-        axios.get(`https://849rs099m3.execute-api.ap-southeast-1.amazonaws.com/techtrek/login?x-api-key= ${API_KEY}`)
-            .then (res  => {
-            console.log(res)
-        })
-            .catch(err => {
-                console.log(err)
+        axios.post(Helper.getUserAPI(), data, {
+            headers: headers
+          })
+          .then((response) => {
+              console.log(response);
+            dispatch({
+              type: FOUND_USER,
+              data: response.data[0]
             })
-    },[])
+          })
+          .catch((error) => {
+            dispatch({
+              type: ERROR_FINDING_USER
+            })
+          }), []
+        }
+    )
 
 
     return (
@@ -41,8 +52,10 @@ function UserDetails(props) {
                     <p> User Asset balance: {assetBalance}</p>
                     <p> User Cash balance: {cashBalance}</p>
                 </div>
+            <button>Transaction History</button>
+            <button>Asset Current Pricing</button>
         </div>
     )
-}
+
 
 export default UserDetails;
